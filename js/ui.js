@@ -42,6 +42,12 @@ function setIdioma(id) {
   aplicarIdioma();
 }
 
+function toggleIdioma() {
+  idioma = idioma === "es" ? "en" : "es";
+  localStorage.setItem("idioma", idioma);
+  aplicarIdioma();
+}
+
 // ===============================
 // MODO OSCURO
 // ===============================
