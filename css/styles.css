@@ -118,3 +118,53 @@ footer p {
   border-radius: 20px;
   font-size: 14px;
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* SWITCH IDIOMA */
+.lang-switch {
+  position: relative;
+  display: flex;
+  background: #e0e0e0;
+  border-radius: 20px;
+  padding: 3px;
+}
+
+.lang-switch button {
+  z-index: 2;
+  border: none;
+  background: transparent;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.lang-switch .slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 45px;
+  height: 26px;
+  background: white;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.lang-switch.en .slider {
+  transform: translateX(45px);
+}
+
+/* DARK MODE */
+body.dark {
+  background: #121212;
+  color: white;
+}
