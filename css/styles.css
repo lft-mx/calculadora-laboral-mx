@@ -118,12 +118,6 @@ footer p {
   border-radius: 20px;
   font-size: 14px;
 }
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-}
 
 .controls {
   display: flex;
