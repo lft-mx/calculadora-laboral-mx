@@ -39,6 +39,7 @@ function setIdioma(id) {
   idioma = id;
   localStorage.setItem("idioma", idioma);
   aplicarIdioma();
+  document.getElementById("ad-text").innerText = textos[idioma].ad;
 }
 
 // ===============================
