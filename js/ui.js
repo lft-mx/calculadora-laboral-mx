@@ -45,8 +45,12 @@ function setIdioma(id) {
 function toggleModo() {
   document.body.classList.toggle("dark");
 
-  const modo = document.body.classList.contains("dark") ? "dark" : "light";
-  localStorage.setItem("modo", modo);
+  const btn = document.getElementById("modo-btn");
+  const isDark = document.body.classList.contains("dark");
+
+  btn.innerText = isDark ? "☀️" : "🌙";
+
+  localStorage.setItem("modo", isDark ? "dark" : "light");
 }
 
 // ===============================
@@ -56,7 +60,11 @@ window.onload = () => {
   aplicarIdioma();
 
   const modoGuardado = localStorage.getItem("modo");
+  
   if (modoGuardado === "dark") {
     document.body.classList.add("dark");
   }
+  const btn = document.getElementById("modo-btn");
+btn.innerText = modoGuardado === "dark" ? "☀️" : "🌙";
+
 };
