@@ -28,3 +28,39 @@ function toggleIdioma() {
 }
 
 window.onload = aplicarIdioma;
+let idioma = localStorage.getItem("idioma") || "es";
+
+function setIdioma(id) {
+  idioma = id;
+  localStorage.setItem("idioma", idioma);
+  actualizarUI();
+}
+
+function actualizarUI() {
+  const titulo = document.getElementById("titulo");
+  const switchLang = document.querySelector(".lang-switch");
+
+  if (idioma === "en") {
+    titulo.innerText = "Work Calculator Mexico 🇲🇽";
+    switchLang.classList.add("en");
+  } else {
+    titulo.innerText = "Calculadora de Sueldo México 🇲🇽";
+    switchLang.classList.remove("en");
+  }
+}
+
+function toggleModo() {
+  document.body.classList.toggle("dark");
+
+  const modo = document.body.classList.contains("dark") ? "dark" : "light";
+  localStorage.setItem("modo", modo);
+}
+
+window.onload = () => {
+  actualizarUI();
+
+  const modoGuardado = localStorage.getItem("modo");
+  if (modoGuardado === "dark") {
+    document.body.classList.add("dark");
+  }
+};
