@@ -10,12 +10,14 @@ const textos = {
   es: {
     titulo: "Calculadora Laboral México",
     subtitulo: "Herramientas",
-    btnSueldo: "Calcular Sueldo Neto"
+    btnSueldo: "Calcular Sueldo Neto",
+    ad: "Espacio publicitario"
   },
   en: {
-    titulo: "Work Calculator Mexico 🇲🇽",
+    titulo: "Work Calculator Mexico",
     subtitulo: "Tools",
-    btnSueldo: "Calculate Net Salary"
+    btnSueldo: "Calculate Net Salary",
+    ad: "Ad space"
   }
 };
 
