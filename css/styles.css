@@ -167,7 +167,7 @@ footer p {
 
 /* movimiento exacto */
 .lang-switch.en .slider {
-  transform: translateX(40px);
+  transform: translateX(calc(100% - 6px));
 }
 .lang-switch .slider {
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
