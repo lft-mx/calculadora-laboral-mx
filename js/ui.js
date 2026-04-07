@@ -8,7 +8,7 @@ let idioma = localStorage.getItem("idioma") || "es";
 // ===============================
 const textos = {
   es: {
-    titulo: "Calculadora Laboral México 🇲🇽",
+    titulo: "Calculadora Laboral México",
     subtitulo: "Herramientas",
     btnSueldo: "Calcular Sueldo Neto"
   },
