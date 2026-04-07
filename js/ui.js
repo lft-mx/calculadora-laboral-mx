@@ -59,7 +59,7 @@ function toggleModo() {
 // ===============================
 // INICIALIZACIÓN
 // ===============================
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = () => {
   aplicarIdioma();
 
   const modoGuardado = localStorage.getItem("modo");
