@@ -33,13 +33,13 @@ function aplicarIdioma() {
   if (switchLang) {
     switchLang.classList.toggle("en", idioma === "en");
   }
+  document.getElementById("ad-text").innerText = textos[idioma].ad;
 }
 
 function setIdioma(id) {
   idioma = id;
   localStorage.setItem("idioma", idioma);
   aplicarIdioma();
-  document.getElementById("ad-text").innerText = textos[idioma].ad;
 }
 
 // ===============================
