@@ -71,3 +71,35 @@ footer p {
   letter-spacing: 2px;
   text-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
+/* 📱 MÓVIL */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .btn {
+    font-size: 16px;
+  }
+}
+
+/* 📲 TABLET */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .card {
+    margin: 20px auto;
+    width: 80%;
+  }
+}
+
+/* 💻 DESKTOP */
+@media (min-width: 1025px) {
+  .card {
+    width: 600px;
+    margin: 20px auto;
+  }
+}
