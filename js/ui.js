@@ -1,8 +1,11 @@
-function toggleModo() {
-  document.body.classList.toggle("dark");
-}
-let idioma = "es";
+// ===============================
+// ESTADO GLOBAL
+// ===============================
+let idioma = localStorage.getItem("idioma") || "es";
 
+// ===============================
+// TEXTOS
+// ===============================
 const textos = {
   es: {
     titulo: "Calculadora Laboral México 🇲🇽",
@@ -16,39 +19,29 @@ const textos = {
   }
 };
 
+// ===============================
+// IDIOMA
+// ===============================
 function aplicarIdioma() {
   document.getElementById("titulo").innerText = textos[idioma].titulo;
   document.getElementById("subtitulo").innerText = textos[idioma].subtitulo;
   document.getElementById("btnSueldo").innerText = textos[idioma].btnSueldo;
-}
 
-function toggleIdioma() {
-  idioma = idioma === "es" ? "en" : "es";
-  aplicarIdioma();
+  const switchLang = document.querySelector(".lang-switch");
+  if (switchLang) {
+    switchLang.classList.toggle("en", idioma === "en");
+  }
 }
-
-window.onload = aplicarIdioma;
-let idioma = localStorage.getItem("idioma") || "es";
 
 function setIdioma(id) {
   idioma = id;
   localStorage.setItem("idioma", idioma);
-  actualizarUI();
+  aplicarIdioma();
 }
 
-function actualizarUI() {
-  const titulo = document.getElementById("titulo");
-  const switchLang = document.querySelector(".lang-switch");
-
-  if (idioma === "en") {
-    titulo.innerText = "Work Calculator Mexico 🇲🇽";
-    switchLang.classList.add("en");
-  } else {
-    titulo.innerText = "Calculadora de Sueldo México 🇲🇽";
-    switchLang.classList.remove("en");
-  }
-}
-
+// ===============================
+// MODO OSCURO
+// ===============================
 function toggleModo() {
   document.body.classList.toggle("dark");
 
@@ -56,8 +49,11 @@ function toggleModo() {
   localStorage.setItem("modo", modo);
 }
 
+// ===============================
+// INICIALIZACIÓN
+// ===============================
 window.onload = () => {
-  actualizarUI();
+  aplicarIdioma();
 
   const modoGuardado = localStorage.getItem("modo");
   if (modoGuardado === "dark") {
