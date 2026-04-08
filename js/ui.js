@@ -77,3 +77,37 @@ window.onload = () => {
 btn.innerText = modoGuardado === "dark" ? "☀️" : "🌙";
 
 };
+
+// ===============================
+// CÁLCULO DE SUELDO
+// ===============================
+function calcularSueldo() {
+  const salario = parseFloat(document.getElementById("salario").value) || 0;
+  const bonos = parseFloat(document.getElementById("bonos").value) || 0;
+  const infonavit = parseFloat(document.getElementById("infonavit").value) || 0;
+
+  const ingresoTotal = salario + bonos;
+
+  // ISR aproximado
+  let isr = 0;
+  if (ingresoTotal > 10000) {
+    isr = ingresoTotal * 0.1;
+  }
+
+  // IMSS aproximado
+  const imss = ingresoTotal * 0.03;
+
+  // Total deducciones
+  const deducciones = isr + imss + infonavit;
+
+  // Sueldo neto
+  const neto = ingresoTotal - deducciones;
+
+  document.getElementById("resultado").innerHTML = `
+    <p>Ingreso total: $${ingresoTotal.toFixed(2)}</p>
+    <p>ISR: $${isr.toFixed(2)}</p>
+    <p>IMSS: $${imss.toFixed(2)}</p>
+    <p>Infonavit: $${infonavit.toFixed(2)}</p>
+    <h3>Sueldo neto: $${neto.toFixed(2)}</h3>
+  `;
+}
