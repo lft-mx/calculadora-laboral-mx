@@ -47,7 +47,7 @@ function aplicarIdioma() {
   const btn = document.querySelector(".btn");
   if (btn) btn.innerText = textos[idioma].calcular;
   }
-
+}
 function setIdioma(id) {
   idioma = id;
   localStorage.setItem("idioma", idioma);
