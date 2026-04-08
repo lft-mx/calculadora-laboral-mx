@@ -10,13 +10,19 @@ const textos = {
   es: {
     titulo: "Calculadora Laboral México",
     subtitulo: "Herramientas",
-    btnSueldo: "Calcular Sueldo Neto",
+    salario: "Salario mensual",
+    bonos: "Bonos / comisiones (opcional)",
+    infonavit: "Descuento Infonavit (opcional)",
+    calcular: "Calcular",
     ad: "Espacio publicitario"
   },
   en: {
     titulo: "Work Calculator Mexico",
     subtitulo: "Tools",
-    btnSueldo: "Calculate Net Salary",
+    salario: "Monthly salary",
+    bonos: "Bonuses / commissions (optional)",
+    infonavit: "Infonavit deduction (optional)",
+    calcular: "Calculate",
     ad: "Ad space"
   }
 };
@@ -34,7 +40,13 @@ function aplicarIdioma() {
     switchLang.classList.toggle("en", idioma === "en");
   }
   document.getElementById("ad-text").innerText = textos[idioma].ad;
-}
+  document.getElementById("salario").placeholder = textos[idioma].salario;
+  document.getElementById("bonos").placeholder = textos[idioma].bonos;
+  document.getElementById("infonavit").placeholder = textos[idioma].infonavit;
+  
+  const btn = document.querySelector(".btn");
+  if (btn) btn.innerText = textos[idioma].calcular;
+  }
 
 function setIdioma(id) {
   idioma = id;
@@ -104,10 +116,10 @@ function calcularSueldo() {
   const neto = ingresoTotal - deducciones;
 
   document.getElementById("resultado").innerHTML = `
-    <p>Ingreso total: $${ingresoTotal.toFixed(2)}</p>
-    <p>ISR: $${isr.toFixed(2)}</p>
-    <p>IMSS: $${imss.toFixed(2)}</p>
-    <p>Infonavit: $${infonavit.toFixed(2)}</p>
-    <h3>Sueldo neto: $${neto.toFixed(2)}</h3>
+    <p>Ingreso total: $${ingresoTotal.toLocaleString()}</p>
+    <p>ISR: $${isr.toLocaleString()}</p>
+    <p>IMSS: $${imss.toLocaleString()}</p>
+    <p>Infonavit: $${infonavit.toLocaleString()}</p>
+    <h3>Sueldo neto: $${neto.toLocaleString()}</h3>
   `;
 }
