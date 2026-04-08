@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculadora Laboral México</title>
-<link rel="stylesheet" href="css/styles.css">
+<script>
+  const v = new Date().getTime();
+  document.write('<link rel="stylesheet" href="css/styles.css?v=' + v + '">');
+</script>
 </head>
 
 <body>
@@ -50,7 +53,10 @@
   <p>© 2026 LFT MX</p>
 </footer>
 
-<script src="js/ui.js?v=2"></script>
+<script>
+  const v = new Date().getTime();
+  document.write('<script src="js/ui.js?v=' + v + '"><\/script>');
+</script>
 
 </body>
 </html>
