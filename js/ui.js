@@ -168,3 +168,6 @@ function renderGrafica(isr, imss, infonavit, neto) {
     }
   });
 }
+function verDetalle() {
+  alert("Aquí irá la versión avanzada (siguiente paso)");
+}
