@@ -33,7 +33,7 @@ const textos = {
 function aplicarIdioma() {
   document.getElementById("titulo").innerText = textos[idioma].titulo;
   document.getElementById("subtitulo").innerText = textos[idioma].subtitulo;
-  document.getElementById("btnSueldo").innerText = textos[idioma].btnSueldo;
+  //document.getElementById("btnSueldo").innerText = textos[idioma].btnSueldo;
 
   const switchLang = document.querySelector(".lang-switch");
   if (switchLang) {
