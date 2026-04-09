@@ -152,7 +152,7 @@ function renderGrafica(isr, imss, infonavit, neto) {
     (neto / total) * 100
   ];
 
-  const ctx = document.getElementById("grafica");
+  const ctx = document.getElementById("grafica").getContext("2d");
 
   if (window.chart) {
     window.chart.destroy();
