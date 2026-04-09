@@ -114,12 +114,57 @@ function calcularSueldo() {
 
   // Sueldo neto
   const neto = ingresoTotal - deducciones;
+  renderGrafica(isr, imss, infonavit, neto);
 
   document.getElementById("resultado").innerHTML = `
-    <p>Ingreso total: $${ingresoTotal.toLocaleString()}</p>
-    <p>ISR: $${isr.toLocaleString()}</p>
-    <p>IMSS: $${imss.toLocaleString()}</p>
-    <p>Infonavit: $${infonavit.toLocaleString()}</p>
+    <p><strong>Ingreso total:</strong> $${ingresoTotal.toLocaleString()}</p>
+  
+    <p>
+      <strong>ISR:</strong> $${isr.toLocaleString()} 
+      <br><small>Impuesto sobre tu ingreso</small>
+    </p>
+  
+    <p>
+      <strong>IMSS:</strong> $${imss.toLocaleString()}
+      <br><small>Seguro social obligatorio</small>
+    </p>
+  
+    <p><strong>Infonavit:</strong> $${infonavit.toLocaleString()}</p>
+  
+    <hr>
+  
     <h3>Sueldo neto: $${neto.toLocaleString()}</h3>
+  
+    <br>
+  
+    <button onclick="verDetalle()" class="btn">
+      Ver cálculo detallado →
+    </button>
   `;
+}
+function renderGrafica(isr, imss, infonavit, neto) {
+  const total = isr + imss + infonavit + neto;
+
+  const data = [
+    (isr / total) * 100,
+    (imss / total) * 100,
+    (infonavit / total) * 100,
+    (neto / total) * 100
+  ];
+
+  const ctx = document.getElementById("grafica");
+
+  if (window.chart) {
+    window.chart.destroy();
+  }
+
+  window.chart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["ISR", "IMSS", "Infonavit", "Neto"],
+      datasets: [{
+        data: data
+      }]
+    }
+  });
 }
