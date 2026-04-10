@@ -210,3 +210,18 @@ input {
   background: #00c853;
   color: white;
 }
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.8;
+}
