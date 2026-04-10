@@ -257,8 +257,17 @@ function cambiarModo(modo) {
 
 // 👇 ESTA FUNCIÓN DEBE ESTAR FUERA, NO DENTRO DE cambiarModo
 function formatMoney(input) {
-  let valor = input.value.replace(/[^0-9.-]/g, '');
-  if (valor) {
-    input.value = '$' + parseFloat(valor).toLocaleString();
+  // Guardar el valor original sin formato
+  let valorOriginal = input.value.replace(/[^0-9.-]/g, '');
+  
+  if (valorOriginal && valorOriginal !== '') {
+    // Si hay un número, mostrar con $ y formato
+    let numero = parseFloat(valorOriginal);
+    if (!isNaN(numero)) {
+      input.value = '$' + numero.toLocaleString();
+    }
+  } else {
+    // Si está vacío, dejar el placeholder visible
+    input.value = '';
   }
 }
