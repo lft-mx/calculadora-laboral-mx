@@ -146,8 +146,13 @@ function calcularSueldo() {
   const ingresoTotal = salarioReal + bonos;
 
   let isr = 0;
-  if (ingresoTotal > 10000) {
-    isr = ingresoTotal * 0.1;
+
+  // 💡 Simulación más real (tipo nómina)
+  if (ingresoTotal > 3000) {
+    isr = ingresoTotal * 0.08;
+  }
+  if (ingresoTotal > 5000) {
+    isr = ingresoTotal * 0.10;
   }
 
   const imss = ingresoTotal * 0.03;
@@ -159,25 +164,32 @@ function calcularSueldo() {
   renderGrafica(isr, imss, infonavit, neto);
 
   document.getElementById("resultado").innerHTML = `
-    <p><strong>Ingreso total:</strong> $${ingresoTotal.toLocaleString()}</p>
-
+    <p><strong>💰 Ingreso calculado:</strong> $${ingresoTotal.toLocaleString()}</p>
+  
+    <p>📅 Periodo: <strong>${periodo}</strong></p>
+    <p>👷 Días trabajados: <strong>${dias}</strong></p>
+  
     <p>
-      <strong>ISR:</strong> $${isr.toLocaleString()} 
-      <br><small>Impuesto sobre tu ingreso</small>
+      🧾 <strong>ISR:</strong> $${isr.toLocaleString()} 
+      <br><small>Estimado con lógica tipo nómina</small>
     </p>
-
+  
     <p>
-      <strong>IMSS:</strong> $${imss.toLocaleString()}
-      <br><small>Seguro social obligatorio</small>
+      🏥 <strong>IMSS:</strong> $${imss.toLocaleString()}
     </p>
-
-    <p><strong>Infonavit:</strong> $${infonavit.toLocaleString()}</p>
-
+  
+    <p>🏠 <strong>Infonavit:</strong> $${infonavit.toLocaleString()}</p>
+  
     <hr>
-
-    <h3>Sueldo neto: $${neto.toLocaleString()}</h3>
-
+  
+    <h3>💵 Recibes: $${neto.toLocaleString()}</h3>
+  
     <br>
+  
+    <small>
+    ⚠️ Nota: Aunque existen tablas quincenales, muchas empresas calculan el ISR con base mensual y luego lo ajustan por periodo.
+    </small>
+  `;
 
     <button onclick="verDetalle()" class="btn">
       Ver cálculo detallado →
