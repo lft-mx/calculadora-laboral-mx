@@ -48,16 +48,16 @@
       </select>
       
       <!-- SUELDO (AHORA SEGUNDO) -->
-      <input type="number" id="salario" placeholder="Salario mensual">
+      <input type="number" id="salario" placeholder="Salario mensual" oninput="formatMoney(this)">
       
       <!-- DÍAS TRABAJADOS -->
       <label>Días trabajados 👷</label>
       <input type="number" id="dias" placeholder="Ej: 15 o 16">
-    <input type="number" id="bonos" placeholder="Bonos / comisiones (opcional)">
-    <input type="number" id="infonavit" placeholder="Descuento Infonavit (opcional)">
+    <input type="number" id="bonos" placeholder="Bonos / comisiones (opcional)" oninput="formatMoney(this)">
+    <input type="number" id="infonavit" placeholder="Descuento Infonavit (opcional)" oninput="formatMoney(this)">
   
     <!-- INPUT NETO -->
-    <input type="number" id="netoInput" placeholder="¿Cuánto te depositan?" style="display:none;">
+    <input type="number" id="netoInput" placeholder="¿Cuánto te depositan?" style="display:none;" oninput="formatMoney(this)">
   
     <!-- BOTÓN -->
     <button class="btn" onclick="calcularSueldo()">Calcular</button>
