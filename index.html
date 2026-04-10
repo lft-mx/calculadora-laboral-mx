@@ -29,16 +29,21 @@
 <main>
 
   <section class="card">
+
+    <!-- TABS -->
     <div class="tabs">
       <button class="tab active" onclick="cambiarModo('bruto')">Sueldo bruto</button>
       <button class="tab" onclick="cambiarModo('neto')">Lo que recibo</button>
     </div>
+  
     <h2 id="subtitulo"></h2>
   
-    <!-- INPUTS -->
+    <!-- INPUTS BRUTO -->
     <input type="number" id="salario" placeholder="Salario mensual">
     <input type="number" id="bonos" placeholder="Bonos / comisiones (opcional)">
     <input type="number" id="infonavit" placeholder="Descuento Infonavit (opcional)">
+  
+    <!-- INPUT NETO -->
     <input type="number" id="netoInput" placeholder="¿Cuánto te depositan?" style="display:none;">
   
     <!-- BOTÓN -->
@@ -47,10 +52,7 @@
     <!-- RESULTADO -->
     <div id="resultado"></div>
     <canvas id="grafica" style="margin-top:20px;"></canvas>
-  </section>
-
-  <section class="card ad" id="ad-text">
-    Espacio publicitario
+  
   </section>
 
 </main>
