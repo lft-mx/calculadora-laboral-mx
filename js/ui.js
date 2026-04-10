@@ -40,7 +40,7 @@ function aplicarIdioma() {
   if (switchLang) {
     switchLang.classList.toggle("en", idioma === "en");
   }
-  document.getElementById("ad-text").innerText = textos[idioma].ad;
+  // document.getElementById("ad-text").innerText = textos[idioma].ad;
   document.getElementById("salario").placeholder = textos[idioma].salario;
   document.getElementById("bonos").placeholder = textos[idioma].bonos;
   document.getElementById("infonavit").placeholder = textos[idioma].infonavit;
@@ -163,39 +163,21 @@ function calcularSueldo() {
 
   renderGrafica(isr, imss, infonavit, neto);
 
-  document.getElementById("resultado").innerHTML = `
-    <p><strong>💰 Ingreso calculado:</strong> $${ingresoTotal.toLocaleString()}</p>
-  
-    <p>📅 Periodo: <strong>${periodo}</strong></p>
-    <p>👷 Días trabajados: <strong>${dias}</strong></p>
-  
-    <p>
-      🧾 <strong>ISR:</strong> $${isr.toLocaleString()} 
-      <br><small>Estimado con lógica tipo nómina</small>
-    </p>
-  
-    <p>
-      🏥 <strong>IMSS:</strong> $${imss.toLocaleString()}
-    </p>
-  
-    <p>🏠 <strong>Infonavit:</strong> $${infonavit.toLocaleString()}</p>
-  
-    <hr>
-  
-    <h3>💵 Recibes: $${neto.toLocaleString()}</h3>
-  
-    <br>
-  
-    <small>
-    ⚠️ Nota: Aunque existen tablas quincenales, muchas empresas calculan el ISR con base mensual y luego lo ajustan por periodo.
-    </small>
-  `;
-
-    <button onclick="verDetalle()" class="btn">
-      Ver cálculo detallado →
-    </button>
-  `;
-}
+    document.getElementById("resultado").innerHTML = `
+      <p><strong>💰 Ingreso calculado:</strong> $${ingresoTotal.toLocaleString()}</p>
+      <p>📅 Periodo: <strong>${periodo}</strong></p>
+      <p>👷 Días trabajados: <strong>${dias}</strong></p>
+      <p>🧾 <strong>ISR:</strong> $${isr.toLocaleString()} <br><small>Estimado con lógica tipo nómina</small></p>
+      <p>🏥 <strong>IMSS:</strong> $${imss.toLocaleString()}</p>
+      <p>🏠 <strong>Infonavit:</strong> $${infonavit.toLocaleString()}</p>
+      <hr>
+      <h3>💵 Recibes: $${neto.toLocaleString()}</h3>
+      <br>
+      <small>⚠️ Nota: Aunque existen tablas quincenales, muchas empresas calculan el ISR con base mensual y luego lo ajustan por periodo.</small>
+      <br><br>
+      <button onclick="verDetalle()" class="btn">Ver cálculo detallado →</button>
+    `;
+  }
 function renderGrafica(isr, imss, infonavit, neto) {
   const total = isr + imss + infonavit + neto;
 
@@ -255,11 +237,21 @@ function cambiarModo(modo) {
     document.getElementById("bonos").style.display = "block";
     document.getElementById("infonavit").style.display = "block";
     document.getElementById("netoInput").style.display = "none";
+    
+    // Mostrar labels
+    const labels = document.querySelectorAll("label");
+    if (labels[0]) labels[0].style.display = "block";
+    if (labels[1]) labels[1].style.display = "block";
   } else {
     tabs[1].classList.add("active");
     document.getElementById("salario").style.display = "none";
     document.getElementById("bonos").style.display = "none";
     document.getElementById("infonavit").style.display = "none";
     document.getElementById("netoInput").style.display = "block";
+    
+    // Ocultar labels
+    const labels = document.querySelectorAll("label");
+    if (labels[0]) labels[0].style.display = "none";
+    if (labels[1]) labels[1].style.display = "none";
   }
 }
