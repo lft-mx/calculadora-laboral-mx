@@ -34,6 +34,7 @@ const textos = {
 function aplicarIdioma() {
   document.getElementById("titulo").innerText = textos[idioma].titulo;
   document.getElementById("subtitulo").innerText = textos[idioma].subtitulo;
+  document.getElementById("document.getElementById("¿Cuánto te depositan?").innerText = (idioma === "es") ? "💡 Sueldo neto = Lo que realmente recibes después de impuestos" : "💡 Net salary = What you actually receive after taxes";
   //document.getElementById("btnSueldo").innerText = textos[idioma].btnSueldo;
 
   const switchLang = document.querySelector(".lang-switch");
