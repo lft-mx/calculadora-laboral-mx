@@ -254,4 +254,11 @@ function cambiarModo(modo) {
     if (labels[0]) labels[0].style.display = "none";
     if (labels[1]) labels[1].style.display = "none";
   }
+// Agregar $ a los inputs cuando el usuario escribe
+function formatMoney(input) {
+  let valor = input.value.replace(/[^0-9.-]/g, '');
+  if (valor) {
+    input.value = '$' + parseFloat(valor).toLocaleString();
+  }
+}
 }
