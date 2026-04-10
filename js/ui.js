@@ -45,7 +45,7 @@ function aplicarIdioma() {
   document.getElementById("salario").placeholder = textos[idioma].salario;
   document.getElementById("bonos").placeholder = textos[idioma].bonos;
   document.getElementById("infonavit").placeholder = textos[idioma].infonavit;
-  
+  document.getElementById("netoInput").placeholder = (idioma === "es") ? "¿Cuánto te depositan?" : "How much do you get?";
   const btn = document.querySelector(".btn");
   if (btn) btn.innerText = textos[idioma].calcular;
   }
@@ -257,17 +257,29 @@ function cambiarModo(modo) {
 
 // 👇 ESTA FUNCIÓN DEBE ESTAR FUERA, NO DENTRO DE cambiarModo
 function formatMoney(input) {
-  // Guardar el valor original sin formato
-  let valorOriginal = input.value.replace(/[^0-9.-]/g, '');
+  // Obtener el valor actual
+  let valor = input.value;
   
-  if (valorOriginal && valorOriginal !== '') {
-    // Si hay un número, mostrar con $ y formato
-    let numero = parseFloat(valorOriginal);
-    if (!isNaN(numero)) {
-      input.value = '$' + numero.toLocaleString();
-    }
-  } else {
-    // Si está vacío, dejar el placeholder visible
+  // Si está vacío, no hacer nada
+  if (valor === '') return;
+  
+  // Eliminar todo lo que no sea número o punto
+  let numeros = valor.replace(/[^0-9.]/g, '');
+  
+  // Si no hay números, limpiar el input
+  if (numeros === '') {
     input.value = '';
+    return;
+  }
+  
+  // Convertir a número
+  let numero = parseFloat(numeros);
+  
+  // Si es válido, formatear con $
+  if (!isNaN(numero)) {
+    input.value = '$' + numero.toLocaleString('en-US', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    });
   }
 }
