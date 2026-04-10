@@ -225,3 +225,20 @@ label {
   font-size: 14px;
   opacity: 0.8;
 }
+/* Modo oscuro para inputs y selects */
+body.dark input,
+body.dark select,
+body.dark .tab {
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+body.dark .tab.active {
+  background: #00c853;
+  color: white;
+}
+
+body.dark .btn {
+  background: #00c853;
+}
