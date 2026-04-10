@@ -127,10 +127,23 @@ function calcularSueldo() {
   // MODO BRUTO (EL ORIGINAL)
   // ===============================
   const salario = parseFloat(document.getElementById("salario").value) || 0;
+  const salarioInput = parseFloat(document.getElementById("salario").value) || 0;
   const bonos = parseFloat(document.getElementById("bonos").value) || 0;
   const infonavit = parseFloat(document.getElementById("infonavit").value) || 0;
-
-  const ingresoTotal = salario + bonos;
+  const dias = parseFloat(document.getElementById("dias").value) || 15;
+  const periodo = document.getElementById("periodo").value;
+  
+  // 🎯 Convertir salario a diario según periodo
+  let salarioDiario = 0;
+  
+  if (periodo === "mensual") salarioDiario = salarioInput / 30;
+  if (periodo === "quincenal") salarioDiario = salarioInput / 15;
+  if (periodo === "semanal") salarioDiario = salarioInput / 7;
+  
+  // 🔥 ingreso real basado en días trabajados
+  const salarioReal = salarioDiario * dias;
+  
+  const ingresoTotal = salarioReal + bonos;
 
   let isr = 0;
   if (ingresoTotal > 10000) {
