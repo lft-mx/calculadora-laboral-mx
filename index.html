@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CHEVE CHEVE</title>
+<title>Calculadora Laboral México</title>
 <script>
   const v = new Date().getTime();
   document.write('<link rel="stylesheet" href="css/styles.css?v=' + v + '">');
@@ -39,14 +39,16 @@
     <h2 id="subtitulo"></h2>
   
     <!-- INPUTS BRUTO -->
-    <input type="number" id="salario" placeholder="Salario mensual">
-      <!-- PERIODO -->
+      <!-- PERIODO (AHORA PRIMERO) -->
       <label>Periodo de pago 🗓️</label>
       <select id="periodo">
         <option value="mensual">Mensual</option>
         <option value="quincenal">Quincenal</option>
         <option value="semanal">Semanal</option>
       </select>
+      
+      <!-- SUELDO (AHORA SEGUNDO) -->
+      <input type="number" id="salario" placeholder="Salario mensual">
       
       <!-- DÍAS TRABAJADOS -->
       <label>Días trabajados 👷</label>
