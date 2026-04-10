@@ -159,15 +159,31 @@ function renderGrafica(isr, imss, infonavit, neto) {
   }
 
   window.chart = new Chart(ctx, {
-    type: "doughnut",
-    data: {
-      labels: ["ISR", "IMSS", "Infonavit", "Neto"],
-      datasets: [{
-        data: data
-      }]
+  type: "doughnut",
+  data: {
+    labels: ["ISR", "IMSS", "Infonavit", "Neto"],
+    datasets: [{
+      data: data,
+      backgroundColor: [
+        "#ff4d4d",  // ISR rojo
+        "#ffa500",  // IMSS naranja
+        "#4da6ff",  // Infonavit azul
+        "#00c853"   // Neto verde
+      ]
+    }]
+  },
+  options: {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return context.label + ": " + context.raw.toFixed(1) + "%";
+          }
+        }
+      }
     }
-  });
-}
+  }
+});
 function verDetalle() {
   alert("Aquí irá la versión avanzada (siguiente paso)");
 }
