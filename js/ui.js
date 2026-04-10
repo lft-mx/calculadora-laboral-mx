@@ -1,3 +1,4 @@
+let modoCalculo = "bruto";
 // ===============================
 // ESTADO GLOBAL
 // ===============================
@@ -94,49 +95,75 @@ btn.innerText = modoGuardado === "dark" ? "☀️" : "🌙";
 // CÁLCULO DE SUELDO
 // ===============================
 function calcularSueldo() {
+
+  // ===============================
+  // MODO NETO (PRIMERO)
+  // ===============================
+  if (modoCalculo === "neto") {
+    const neto = parseFloat(document.getElementById("netoInput").value) || 0;
+
+    // estimación inversa simple
+    const ingresoTotal = neto / 0.85;
+
+    const isr = ingresoTotal * 0.1;
+    const imss = ingresoTotal * 0.03;
+    const infonavit = 0;
+
+    renderGrafica(isr, imss, infonavit, neto);
+
+    document.getElementById("resultado").innerHTML = `
+      <p><strong>Estimación sueldo bruto:</strong> $${ingresoTotal.toLocaleString()}</p>
+      <p>ISR estimado: $${isr.toLocaleString()}</p>
+      <p>IMSS estimado: $${imss.toLocaleString()}</p>
+      <h3>Recibes: $${neto.toLocaleString()}</h3>
+    `;
+
+    return;
+  }
+
+  // ===============================
+  // MODO BRUTO (EL ORIGINAL)
+  // ===============================
   const salario = parseFloat(document.getElementById("salario").value) || 0;
   const bonos = parseFloat(document.getElementById("bonos").value) || 0;
   const infonavit = parseFloat(document.getElementById("infonavit").value) || 0;
 
   const ingresoTotal = salario + bonos;
 
-  // ISR aproximado
   let isr = 0;
   if (ingresoTotal > 10000) {
     isr = ingresoTotal * 0.1;
   }
 
-  // IMSS aproximado
   const imss = ingresoTotal * 0.03;
 
-  // Total deducciones
   const deducciones = isr + imss + infonavit;
 
-  // Sueldo neto
   const neto = ingresoTotal - deducciones;
+
   renderGrafica(isr, imss, infonavit, neto);
 
   document.getElementById("resultado").innerHTML = `
     <p><strong>Ingreso total:</strong> $${ingresoTotal.toLocaleString()}</p>
-  
+
     <p>
       <strong>ISR:</strong> $${isr.toLocaleString()} 
       <br><small>Impuesto sobre tu ingreso</small>
     </p>
-  
+
     <p>
       <strong>IMSS:</strong> $${imss.toLocaleString()}
       <br><small>Seguro social obligatorio</small>
     </p>
-  
+
     <p><strong>Infonavit:</strong> $${infonavit.toLocaleString()}</p>
-  
+
     <hr>
-  
+
     <h3>Sueldo neto: $${neto.toLocaleString()}</h3>
-  
+
     <br>
-  
+
     <button onclick="verDetalle()" class="btn">
       Ver cálculo detallado →
     </button>
@@ -186,4 +213,24 @@ function renderGrafica(isr, imss, infonavit, neto) {
 });
 function verDetalle() {
   alert("Aquí irá la versión avanzada (siguiente paso)");
+}
+function cambiarModo(modo) {
+  modoCalculo = modo;
+
+  const tabs = document.querySelectorAll(".tab");
+  tabs.forEach(t => t.classList.remove("active"));
+
+  if (modo === "bruto") {
+    tabs[0].classList.add("active");
+    document.getElementById("salario").style.display = "block";
+    document.getElementById("bonos").style.display = "block";
+    document.getElementById("infonavit").style.display = "block";
+    document.getElementById("netoInput").style.display = "none";
+  } else {
+    tabs[1].classList.add("active");
+    document.getElementById("salario").style.display = "none";
+    document.getElementById("bonos").style.display = "none";
+    document.getElementById("infonavit").style.display = "none";
+    document.getElementById("netoInput").style.display = "block";
+  }
 }
