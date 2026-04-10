@@ -29,12 +29,17 @@
 <main>
 
   <section class="card">
+  <div class="tabs">
+    <button class="tab active" onclick="cambiarModo('bruto')">Sueldo bruto</button>
+    <button class="tab" onclick="cambiarModo('neto')">Lo que recibo</button>
+  </div>
     <h2 id="subtitulo"></h2>
   
     <!-- INPUTS -->
     <input type="number" id="salario" placeholder="Salario mensual">
     <input type="number" id="bonos" placeholder="Bonos / comisiones (opcional)">
     <input type="number" id="infonavit" placeholder="Descuento Infonavit (opcional)">
+    <input type="number" id="netoInput" placeholder="¿Cuánto te depositan?" style="display:none;">
   
     <!-- BOTÓN -->
     <button class="btn" onclick="calcularSueldo()">Calcular</button>
