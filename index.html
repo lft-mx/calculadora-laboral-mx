@@ -37,7 +37,7 @@
     </div>
   
     <h2 id="subtitulo"></h2>
-    <p id="¿Cuánto te depositan?" style="font-size: 14px; margin-top: -5px; margin-bottom: 15px; opacity: 0.7;"></p>
+    <p id="mensajeNeto" style="font-size: 14px; margin-top: -5px; margin-bottom: 15px; opacity: 0.7;"></p>
   
     <!-- INPUTS BRUTO -->
       <!-- PERIODO (AHORA PRIMERO) -->
@@ -58,7 +58,10 @@
     <input type="number" id="infonavit" placeholder="Descuento Infonavit (opcional)" oninput="formatMoney(this)">
   
     <!-- INPUT NETO -->
-    <input type="number" id="netoInput" placeholder="¿Cuánto te depositan?" style="display:none;" oninput="formatMoney(this)">
+    <input type="text" id="netoInput" placeholder="¿Cuánto te depositan?" style="display:none;" oninput="formatMoney(this)">
+    <input type="text" id="salario" placeholder="Salario mensual" oninput="formatMoney(this)">
+    <input type="text" id="bonos" placeholder="Bonos / comisiones (opcional)" oninput="formatMoney(this)">
+    <input type="text" id="infonavit" placeholder="Descuento Infonavit (opcional)" oninput="formatMoney(this)">
   
     <!-- BOTÓN -->
     <button class="btn" id="btnSueldo" onclick="calcularSueldo()">Calcular</button>
