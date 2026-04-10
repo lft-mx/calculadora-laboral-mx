@@ -239,7 +239,6 @@ function cambiarModo(modo) {
     document.getElementById("infonavit").style.display = "block";
     document.getElementById("netoInput").style.display = "none";
     
-    // Mostrar labels
     const labels = document.querySelectorAll("label");
     if (labels[0]) labels[0].style.display = "block";
     if (labels[1]) labels[1].style.display = "block";
@@ -250,16 +249,16 @@ function cambiarModo(modo) {
     document.getElementById("infonavit").style.display = "none";
     document.getElementById("netoInput").style.display = "block";
     
-    // Ocultar labels
     const labels = document.querySelectorAll("label");
     if (labels[0]) labels[0].style.display = "none";
     if (labels[1]) labels[1].style.display = "none";
   }
-// Agregar $ a los inputs cuando el usuario escribe
+}
+
+// 👇 ESTA FUNCIÓN DEBE ESTAR FUERA, NO DENTRO DE cambiarModo
 function formatMoney(input) {
   let valor = input.value.replace(/[^0-9.-]/g, '');
   if (valor) {
     input.value = '$' + parseFloat(valor).toLocaleString();
   }
-}
 }
